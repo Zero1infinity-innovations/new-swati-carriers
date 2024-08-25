@@ -1,0 +1,21 @@
+# * text=auto eol=lf
+
+# *.blade.php diff=html
+# *.css diff=css
+# *.html diff=html
+# *.md diff=markdown
+# *.php diff=php
+
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+# Define LF line endings for specific file types (if needed)
+*.blade.php text eol=lf
+*.php text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore
