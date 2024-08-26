@@ -9,8 +9,8 @@
             <h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item text-white">Pages</li>
                     <li class="breadcrumb-item text-white active" aria-current="page">About</li>
                 </ol>
             </nav>
@@ -81,7 +81,7 @@
                         <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
                         <div class="ps-4">
                             <h6>Call for any query!</h6>
-                            <h3 class="text-primary m-0">+91 9695137922, 8795958890</h3>
+                            <h5 class="text-primary m-0">+91 9695137922, 8795958890</h5>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
 
 
     <!-- Team Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container py-5">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-secondary text-uppercase">Our Team</h6>
@@ -234,5 +234,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
