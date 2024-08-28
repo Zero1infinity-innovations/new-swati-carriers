@@ -18,4 +18,16 @@ class HomeController extends Controller
     public function services(){
         return view("frontend.pages.services");
     }
+
+    public function feedback(){
+        return view("frontend.pages.feedback");
+    }
+
+    public function feedbackStore(Request $request){
+        $data = $request->all();
+        $data["name"] = $request->get("name");
+        $data["email"] = $request->get("email");
+        $data["message"] = $request->get("message");
+        
+    }
 }
