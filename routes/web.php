@@ -21,4 +21,4 @@ Route::get('/feedback',[HomeController::class,'feedback'])->name('feedback');
 
 // feedback store
 
-Route::post('/feedbackStore',[HomeController::class,'feedbackStore'])->name('feedback.store');
+Route::post('/feedbackStore',[HomeController::class,'feedbackStore'])->name('sendFeedback');

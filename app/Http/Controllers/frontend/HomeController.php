@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Email;
+use App\Models\ns_FeedBack;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -24,10 +28,37 @@ class HomeController extends Controller
     }
 
     public function feedbackStore(Request $request){
-        $data = $request->all();
-        $data["name"] = $request->get("name");
-        $data["email"] = $request->get("email");
-        $data["message"] = $request->get("message");
         
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'feedback' => 'required|string',
+        ]);
+
+        
+        $feedbackMessage = ns_FeedBack::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'feedback' => $validatedData['feedback'],
+        ]);
+
+        // Prepare the data for the email
+        $data = [
+            'name' => $feedbackMessage->name,
+        ];
+
+
+        // Send the email
+        $title = "Feedback for New Swati Carriers";
+        $customer = "customer";
+        $admin = "admin";
+
+        Mail::to($request->get("email"))->send(new Email($data, $title, $customer));
+        Mail::to(env("ADMIN_EMAIL"))->send(new Email($data, $title, $admin));
+
+        // Redirect with a success message
+        return redirect()->back()->with('success', 'Your feedback has been submitted successfully.');
+        
+
     }
 }
