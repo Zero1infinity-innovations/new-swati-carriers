@@ -47,7 +47,7 @@ class Email extends Mailable
     {
 
         return new Content(
-            view: 'catalog.include.email',
+            view: 'frontend.common.email',
             with: [
                 'data'=>$this->data,
                 'emailType'=>$this->emailType,

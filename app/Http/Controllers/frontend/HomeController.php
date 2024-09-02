@@ -35,11 +35,12 @@ class HomeController extends Controller
             'feedback' => 'required|string',
         ]);
 
-        
+        // dd($request->all());
         $feedbackMessage = ns_FeedBack::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'feedback' => $validatedData['feedback'],
+            'ipAddress' => request()->ip(),
         ]);
 
         // Prepare the data for the email

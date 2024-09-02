@@ -3,8 +3,43 @@
 @push('setTitle')
     Feedback Form : New Swati Carreirs
 @endpush
+<style>
+    /* Loader styles */
+    .loader {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 8px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #FF3E41;
+        width: 100px;
+        height: 100px;
+        animation: spin 2s linear infinite;
+    }
 
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Overlay to make the background inactive */
+    .overlay {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        z-index: 9999; /* On top of other content */
+    }
+</style>
 @section('content')
+    <div class="overlay" id="overlay">
+        <div class="loader" id="loader"></div>
+    </div>
     <div class="container-fluid page-header py-5" style="margin-bottom: 6rem;">
         <div class="container py-5">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Feedback</h1>
@@ -25,13 +60,17 @@
                         <div class="card-header" style="display:flex; justify-content: space-between;">
                             <h5 class="mb-0">Feedback Form</h5>
                             @if (session('success'))
-                                <div class="alert alert-success">
+                                <div id="success-message" class="text-success">
                                     {{ session('success') }}
+                                </div>
+                            @elseif (session('error'))
+                                <div id="error-message" class="text-danger">
+                                    {{ session('error') }}
                                 </div>
                             @endif
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('sendFeedback') }}" method="POST">
+                            <form id="myForm" action="{{ route('sendFeedback') }}" method="POST">
                                 @csrf
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -76,10 +115,18 @@
         </div>
     </div>
     <script>
-         $(document).ready(function() {
+        //loader
+        document.getElementById('myForm').addEventListener('submit', function() {
+            // Show the loader and overlay when the form is submitted
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('loader').style.display = 'block';
+        });
+
+        // text editor
+        $(document).ready(function() {
             $('#summernote').summernote({
-            height: 300,
-            toolbar: [
+                height: 300,
+                toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'italic', 'underline', 'clear']],
                     ['fontname', ['fontname']],
@@ -90,8 +137,13 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ],
                 styleTags: ['p', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'],
-                fontNamesIgnoreCheck: ['Helvetica Neue', 'Helvetica', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'],
+                fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica Neue',
+                    'Helvetica', 'Impact', 'Lucida Grande', 'Tahoma', 'Times New Roman', 'Verdana'
+                ],
+                fontNamesIgnoreCheck: ['Helvetica Neue', 'Helvetica', 'Arial', 'Arial Black',
+                    'Comic Sans MS', 'Courier New', 'Impact', 'Lucida Grande', 'Tahoma',
+                    'Times New Roman', 'Verdana'
+                ],
                 callbacks: {
                     onImageUpload: function(files) {
                         console.log('Image upload:', files);
@@ -108,46 +160,14 @@
             });
         });
 
+        // Hide the success message after 5 seconds
+        setTimeout(function() {
+            $('#success-message').fadeOut('slow');
+        }, 5000);
+    
+        // Hide the error message after 5 seconds
+        setTimeout(function() {
+            $('#error-message').fadeOut('slow');
+        }, 5000);
     </script>
-    {{-- <script>
-        tinymce.init({
-            selector: '#editor',
-            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak ' +
-                     'searchreplace wordcount visualblocks code fullscreen ' +
-                     'insertdatetime media table emoticons paste code help',
-            toolbar: 'undo redo | formatselect | bold italic backcolor | ' +
-                     'alignleft aligncenter alignright alignjustify | ' +
-                     'bullist numlist outdent indent | removeformat | link image media | ' +
-                     'code fullscreen preview | forecolor emoticons',
-            toolbar_mode: 'floating',
-            height: 500,
-            menubar: true,
-            branding: false,
-            image_advtab: true,
-            image_title: true,
-            automatic_uploads: true,
-            file_picker_types: 'image',
-            images_upload_url: '/upload/image', // Your route for image uploading
-            file_picker_callback: function (cb, value, meta) {
-                var input = document.createElement('input');
-                input.setAttribute('type', 'file');
-                input.setAttribute('accept', 'image/*');
-                input.onchange = function () {
-                    var file = this.files[0];
-                    var reader = new FileReader();
-                    reader.onload = function () {
-                        var id = 'blobid' + (new Date()).getTime();
-                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                        var base64 = reader.result.split(',')[1];
-                        var blobInfo = blobCache.create(id, file, base64);
-                        blobCache.add(blobInfo);
-                        cb(blobInfo.blobUri(), { title: file.name });
-                    };
-                    reader.readAsDataURL(file);
-                };
-                input.click();
-            },
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-        });
-    </script> --}}
 @endsection

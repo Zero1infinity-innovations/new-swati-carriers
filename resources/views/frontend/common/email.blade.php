@@ -5,11 +5,11 @@
         <div style="text-align: center">
             <img height="80" width="150" src="{{ $logo ?? '' }}">
         </div>
-        <div style="margin-bottom: 20px;">
-            <h1 style="color: #333;">Hi {{ $data['name'] ?? '' }}</h1>
-        </div>
         <!-- for customer -->
         @if ($emailType == 'customer')
+            <div style="margin-bottom: 20px;">
+                <h1 style="color: #333;">Hi {{ $data['name'] ?? '' }}</h1>
+            </div>
             <div style="margin-bottom: 20px;">
                 <p style="color: #666; line-height: 1.6;">Thank you for your valuable feedback. We appreciate you  taking the time to share your thoughts with us at New Swati Carreirs. Your input helps us improve and serve you better.</p>
             </div>

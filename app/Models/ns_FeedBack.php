@@ -9,5 +9,8 @@ class ns_FeedBack extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'content'];
+    protected $table = 'ns__feed_backs';
+
+    protected $fillable = ['name', 'email', 'feedback', 'ipAddress'];
+
 }
