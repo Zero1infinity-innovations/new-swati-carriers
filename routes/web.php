@@ -18,7 +18,9 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/services',[HomeController::class,'services'])->name('services');
 Route::get('/feedback',[HomeController::class,'feedback'])->name('feedback');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 
 // feedback store
 
 Route::post('/feedbackStore',[HomeController::class,'feedbackStore'])->name('sendFeedback');
+Route::post('/contactStore',[HomeController::class,'contactStore'])->name('sendContact');

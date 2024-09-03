@@ -21,7 +21,7 @@
             <a href="{{ route('about') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'about' ? 'active' : '' }} ">About</a>
             <a href="{{ route('services') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'services' ? 'active' : '' }}">Services</a>
             <a href="{{ route('feedback') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'feedback' ? 'active' : '' }}">Feedback</a>
-            <a href="" class="nav-item nav-link <?= basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : '' ?>">Contact</a>
+            <a href="{{ route('contact') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
         </div>
         <h6 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-phone text-primary me-3"></i>+91 9695137922, 8795958890</h6>
     </div>

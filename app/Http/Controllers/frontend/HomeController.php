@@ -35,7 +35,6 @@ class HomeController extends Controller
             'feedback' => 'required|string',
         ]);
 
-        // dd($request->all());
         $feedbackMessage = ns_FeedBack::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -59,7 +58,46 @@ class HomeController extends Controller
 
         // Redirect with a success message
         return redirect()->back()->with('success', 'Your feedback has been submitted successfully.');
-        
+    }
 
+    public function contact(){
+        return view("frontend.pages.contact");
+    }
+
+    public function contactStore(Request $request){
+
+        $validatedData = $request->validate([
+            'name' => ['required','string','max:255'],
+            'email' => ['required','email','max:255'],
+           'number' => ['required','bigint'],
+           'message' => ['required','string'],
+        ]);
+
+        // store in database
+        $feedbackMessage = ns_Contact::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'number' => $validatedData['number'],
+            'feedback' => $validatedData['feedback'],
+            'ipAddress' => request()->ip(),
+        ]);
+
+        // Prepare the data for the email
+        $data = [
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+           'number' => $validatedData['number'],
+           'message' => $validatedData['message'],
+        ];
+
+        // Send the email
+        $title = "New Contact Request from New Swati Carriers";
+        $customer = "customer";
+        $admin = "admin";
+
+        Mail::to(env("ADMIN_EMAIL"))->send(new Email($data, $title, $admin));
+
+        // Redirect with a success message
+        return redirect()->back()->with('success', 'Your Details have been successfully sent to New Swati Carriers.');
     }
 }

@@ -93,7 +93,7 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-3">
                                         <label for="message" class="form-label">Message</label>
                                         <textarea name="feedback" id="summernote" class="form-control @error('message') is-invalid @enderror">{{ old('message') }}</textarea>
                                         @error('message')
