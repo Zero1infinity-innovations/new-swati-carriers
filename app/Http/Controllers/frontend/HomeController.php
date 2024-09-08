@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Mail\Email;
+use App\Models\ns_Contact;
 use App\Models\ns_FeedBack;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -12,7 +15,8 @@ use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
 {
     public function index(){
-        return view("index");
+        $feedbacks = $this->GetFeedback();
+        return view("index", compact('feedbacks'));
     }
 
     public function about(){
@@ -66,38 +70,51 @@ class HomeController extends Controller
 
     public function contactStore(Request $request){
 
+
+
         $validatedData = $request->validate([
-            'name' => ['required','string','max:255'],
-            'email' => ['required','email','max:255'],
-           'number' => ['required','bigint'],
-           'message' => ['required','string'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'number' => 'required|numeric',
+            'feedback' => 'required|string',
         ]);
+        
+        $data = $request->request;
 
-        // store in database
-        $feedbackMessage = ns_Contact::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'number' => $validatedData['number'],
-            'feedback' => $validatedData['feedback'],
-            'ipAddress' => request()->ip(),
-        ]);
+        try {
+            // store in database
+            $contactMesssage = ns_Contact::create([
+                'name' => $data->get('name'),
+                'email' => $data->get('email'),
+                'number' => $data->get('number'),
+                'message' => $data->get('feedback'),
+                'ip_address' => request()->ip() ?? '',
+            ]);
+    
+            // Prepare the data for the email
+            $emailData = [
+                'name' => $data->get('name'),
+                'email' => $data->get('email'),
+               'number' => $data->get('number'),
+               'message' => $data->get('feedback'),
+            ];
+    
+            // Send the email
+            $title = "New Contact Request from New Swati Carriers";
+            $admin = "admin";
+    
+            Mail::to(env("ADMIN_EMAIL"))->send(new ContactMail($emailData, $title, $admin));
+    
+            // Redirect with a success message
+            return redirect()->back()->with('success', 'Your Details have been successfully sent to New Swati Carriers Teams.');
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
 
-        // Prepare the data for the email
-        $data = [
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-           'number' => $validatedData['number'],
-           'message' => $validatedData['message'],
-        ];
+    }
 
-        // Send the email
-        $title = "New Contact Request from New Swati Carriers";
-        $customer = "customer";
-        $admin = "admin";
-
-        Mail::to(env("ADMIN_EMAIL"))->send(new Email($data, $title, $admin));
-
-        // Redirect with a success message
-        return redirect()->back()->with('success', 'Your Details have been successfully sent to New Swati Carriers.');
+    public function GetFeedback(){
+        $feedBack = DB::table('ns__feed_backs')->get();
+        return $feedBack;
     }
 }

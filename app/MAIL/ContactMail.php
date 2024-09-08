@@ -3,22 +3,30 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
-class FeedbackMail extends Mailable
+
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
-     */
-    public function __construct()
-    {
-        //
+     */ 
+    public $data;
+    public $emailType;
+    public $title;
+
+    public function __construct($data, $title, $emailType)
+    {   
+        $this->data = $data;
+        $this->emailType = $emailType;
+        $this->title = $title;
+
     }
 
     /**
@@ -27,7 +35,8 @@ class FeedbackMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Feedback Mail',
+            subject: 'Contact With New Swati Carriers',
+            from: new Address(env('MAIL_FROM_ADDRESS'), 'New Swati Carriers')
         );
     }
 
@@ -36,8 +45,14 @@ class FeedbackMail extends Mailable
      */
     public function content(): Content
     {
+
         return new Content(
-            view: 'view.name',
+            view: 'frontend.common.ContactEmail',
+            with: [
+                'data'=>$this->data,
+                'emailType'=>$this->emailType,
+                'logo'=>url('img/log0/logo.png')
+            ]
         );
     }
 

@@ -22,16 +22,17 @@
                         प्रदाता है, जो कई जिलों में ट्रक transportation services में विशेषज्ञता रखती है। कंपनी के पास trucks
                         का एक विशाल बेड़ा है, जो industrial materials से लेकर consumer products तक के विभिन्न प्रकार के
                         सामान की reliable और timely delivery सुनिश्चित करता है।
-                        <br><br/>
+                        <br><br />
                         कंपनी फैजाबाद, आज़मगढ़, बरहलगंज, मऊनाथ भंजन, बेलथरा रोड बलिया, जौनपुर, दोहरीघाट, सिकरीगंज, गगहा,
                         कौरिराम और बरहज जैसे प्रमुख क्षेत्रों में अपने operations के माध्यम से businesses को उनके customers
                         से जोड़ती है। उनके experienced drivers और state-of-the-art tracking systems real-time updates
                         provide करते हैं, जिससे customers को transparency और satisfaction मिलती है।
-                        <br/><br/>
+                        <br /><br />
                         Safety, timely delivery और customer satisfaction के प्रति कंपनी की commitment ने उन्हें logistics
                         industry में एक strong reputation दिलाई है। वे सभी regulatory requirements का पालन करते हैं और सामान
                         की safe transportation को prioritize करते हैं। चाहे यह short-distance हो या long-distance delivery,
-                        कंपनी हर delivery को professionally और पूरी देखभाल के साथ handle करती है।</p>
+                        कंपनी हर delivery को professionally और पूरी देखभाल के साथ handle करती है।
+                    </p>
                     <div class="row g-4 mb-5">
                         <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
                             <i class="fa fa-shipping-fast fa-3x text-primary mb-3"></i>
@@ -43,7 +44,9 @@
                             <h5>On Time Delivery</h5>
                         </div>
                     </div>
-                    <a href="{{ route('about') }}" class="btn btn-primary py-3 px-5 {{ Route::currentRouteName() == 'about' ? 'active' : '' }} ">Explore More</a>
+                    <a href="{{ route('about') }}"
+                        class="btn btn-primary py-3 px-5 {{ Route::currentRouteName() == 'about' ? 'active' : '' }} ">Explore
+                        More</a>
                 </div>
             </div>
         </div>
@@ -113,11 +116,13 @@
                             <img class="img-fluid" src="{{ URL::asset('img/service-3.jpg') }}" alt="">
                         </div>
                         <h4 class="mb-3">Road Transportation</h4>
-                        <p>यह ट्रांसपोर्ट कंपनी आपको reliable और efficient road transportation services प्रदान करती है, जो आपके सामान की timely delivery का promise करती है। हम Faizabad, Azamgarh, Barhalganj, Maunath Bhanjan, Belthera Road Ballia, Jaunpur,... 
+                        <p>यह ट्रांसपोर्ट कंपनी आपको reliable और efficient road transportation services प्रदान करती है, जो
+                            आपके सामान की timely delivery का promise करती है। हम Faizabad, Azamgarh, Barhalganj, Maunath
+                            Bhanjan, Belthera Road Ballia, Jaunpur,...
                             {{-- Dohrighat, Sikriganj, Gagha, Kauriram, और Barhaj जैसे key areas में logistics solutions के experts हैं, जो businesses को उनके customers से connect करते हैं। ... --}}
 
                             {{-- हमारी road transportation services हर type के सामान की safety और timely delivery को ensure करती हैं। चाहे आपको industrial goods transport करने हों या consumer products, हमारे experienced drivers और modern tracking systems से आपको real-time updates मिलते हैं, ताकि आप अपने shipment की exact location track कर सकें। ये locations हमारे key transport hubs हैं, जहां से हम आपके goods को efficiently deliver करते हैं. --}}
-                            
+
                             {{-- Safety और reliability पर हमारा focus है, इसलिए हमारे customers को complete satisfaction मिलती है। आपका सामान हमारे trucks के जरिए इन सभी locations में safely और time पर पहुंचता है। हर delivery को हम पूरी सावधानी और professionalism के साथ handle करते हैं, ताकि आपको best service मिल सके।.</p> --}}
                         </p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
@@ -148,14 +153,16 @@
                         <i class="fa fa-shipping-fast text-primary fa-3x flex-shrink-0"></i>
                         <div class="ms-4">
                             <h5>On Time Delivery</h5>
-                            <p class="mb-0">हमारी कंपनी समय पर डिलीवरी की गारंटी देती है, ताकि आपके व्यवसाय को कभी रुकावट का सामना न करना पड़े।</p>
+                            <p class="mb-0">हमारी कंपनी समय पर डिलीवरी की गारंटी देती है, ताकि आपके व्यवसाय को कभी रुकावट
+                                का सामना न करना पड़े।</p>
                         </div>
                     </div>
                     <div class="d-flex mb-0 wow fadeInUp" data-wow-delay="0.7s">
                         <i class="fa fa-headphones text-primary fa-3x flex-shrink-0"></i>
                         <div class="ms-4">
                             <h5>24/7 Telephone Support</h5>
-                            <p class="mb-0">हमारी कंपनी 24/7 टेलीफोन सपोर्ट प्रदान करती है, जिससे आप किसी भी समय हमसे सहायता प्राप्त कर सकते हैं।</p>
+                            <p class="mb-0">हमारी कंपनी 24/7 टेलीफोन सपोर्ट प्रदान करती है, जिससे आप किसी भी समय हमसे
+                                सहायता प्राप्त कर सकते हैं।</p>
                         </div>
                     </div>
                 </div>
@@ -183,7 +190,7 @@
                         <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
                         <div class="ps-4">
                             <h6>Call for any query!</h6>
-                            <h3 class="text-primary m-0">+012 345 6789</h3>
+                            <h5 class="text-primary m-0">+91 9695137922, 8795958890</h5>
                         </div>
                     </div>
                 </div>
@@ -227,66 +234,30 @@
     <!-- Quote End -->
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="text-center">
-                <h6 class="text-secondary text-uppercase">Testimonial</h6>
-                <h1 class="mb-0">Our Clients Say!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{ URL::asset('img/testimonial-1.jpg') }}"
-                            style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                        Clita erat ipsum et lorem et sit.</p>
+    @if ($feedbacks->isNotEmpty())
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="text-center">
+                    <h6 class="text-secondary text-uppercase">Testimonial</h6>
+                    <h1 class="mb-0">Our Clients Say!</h1>
                 </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{ URL::asset('img/testimonial-2.jpg') }}"
-                            style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    @foreach ($feedbacks as $feedback)
+                        <div class="testimonial-item p-4 my-5">
+                            <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                            <div class="d-flex align-items-end mb-4">
+                                {{-- <img class="img-fluid flex-shrink-0" src="{{ URL::asset('img/' . $testimonial->image) }}"
+                                    style="width: 80px; height: 80px;"> --}}
+                                <div class="ms-4">
+                                    <h5 class="mb-1">{{ $feedback->name }}</h5>
+                                    {{-- <p class="m-0">{{ $feedback->profession }}</p> --}}
+                                </div>
+                            </div>
+                            <p class="mb-0">{{ strip_tags($feedback->feedback) }}</p>
                         </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                        Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{ URL::asset('img/testimonial-3.jpg') }}"
-                            style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                        Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="{{ URL::asset('img/testimonial-4.jpg') }}"
-                            style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
-                        </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos.
-                        Clita erat ipsum et lorem et sit.</p>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 @endsection
