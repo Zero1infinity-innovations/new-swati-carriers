@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backendController\AdminController;
 use App\Http\Controllers\frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// frontend routes
+
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/services',[HomeController::class,'services'])->name('services');
@@ -24,3 +27,9 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 
 Route::post('/feedbackStore',[HomeController::class,'feedbackStore'])->name('sendFeedback');
 Route::post('/contactStore',[HomeController::class,'contactStore'])->name('sendContact');
+
+
+// backend routes
+Route::get('/admin',[AdminController::class,'AdminLogin'])->name('AdminLogin');
+Route::get('/dashboard',[AdminController::class,'dashboard'])->name('Dashboard');
+
