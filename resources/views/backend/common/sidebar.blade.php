@@ -1,8 +1,7 @@
 <!-- Sidenav -->
 <div id="sidenav-1" class="sidenav" role="navigation" data-hidden="false" data-accordion="true">
     <a class="ripple d-flex justify-content-center py-4" href="#!" data-ripple-color="primary">
-        <img id="MDB-logo" src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png"
-            alt="MDB Logo" draggable="false" />
+        <img id="MDB-logo" src="{{ URL::asset('img/logo/logo.png') }}" alt="Swati carries Logo" draggable="false" style="width: 100px; height:100px;"/>
     </a>
 
     <ul class="sidenav-menu">

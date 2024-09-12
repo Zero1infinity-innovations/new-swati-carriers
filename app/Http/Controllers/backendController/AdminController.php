@@ -11,6 +11,7 @@ class AdminController extends Controller
         return view('backend.pages.adminLog');
     }
     public function dashboard(){
-        return view('backend.dashboard');
+        $data['title'] = "Dashboard";
+        return view('backend.dashboard', $data);
     }
 }
