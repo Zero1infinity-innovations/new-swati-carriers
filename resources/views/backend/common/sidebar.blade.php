@@ -6,17 +6,20 @@
 
     <ul class="sidenav-menu">
         <li class="sidenav-item">
-            <a class="sidenav-link" href="">
-                <i class="fas fa-chart-area pr-3"></i><span>Webiste traffic</span></a>
+            <a class="sidenav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
+                <i class="fas fa-chart-area pr-3"></i><span>Dashboard</span>
+            </a>
         </li>
         <li class="sidenav-item">
-            <a class="sidenav-link"><i class="fas fa-cogs pr-3"></i><span>Settings</span></a>
+            <a class="sidenav-link"><i class="fas fa-cogs pr-3"></i><span>Services</span></a>
             <ul class="sidenav-collapse">
                 <li class="sidenav-item">
-                    <a class="sidenav-link">Profile</a>
+                    <a class="sidenav-link {{ Route::currentRouteName() == 'services' ? 'active' : '' }}" href="{{ route('admin.services') }}">
+                        <i class="bi bi-list-ul pr-3"></i><span>Services</span>
+                    </a>
                 </li>
                 <li class="sidenav-item">
-                    <a class="sidenav-link">Account</a>
+                    <a class="sidenav-link"><i class="bi bi-journal-text pr-3"></i><span>Booked Services</span></a>
                 </li>
             </ul>
         </li>

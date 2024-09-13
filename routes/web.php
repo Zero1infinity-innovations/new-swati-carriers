@@ -31,5 +31,6 @@ Route::post('/contactStore',[HomeController::class,'contactStore'])->name('sendC
 
 // backend routes
 Route::get('/admin',[AdminController::class,'AdminLogin'])->name('AdminLogin');
-Route::get('/dashboard',[AdminController::class,'dashboard'])->name('Dashboard');
+Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+Route::get('/services',[AdminController::class,'services'])->name('admin.services');
 

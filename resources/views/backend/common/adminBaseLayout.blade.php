@@ -12,10 +12,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Google Fonts Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"></script>
     <!-- MDB -->
     <link rel="stylesheet" href="{{ URL::asset('adminAssets/css/mdb.min.css') }}" />
     <!-- PRISM -->
     <link rel="stylesheet" href="{{ URL::asset('adminAssets/css/new-prism.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('adminAssets/css/style.css') }}" />
     <!-- Custom styles -->
     <style>
         body{
@@ -34,11 +39,9 @@
             padding: 10px 0;
             text-align: center;
             width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
             height: 50px;
             line-height: 30px; 
+            margin-top: 2rem;
             box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
@@ -89,7 +92,7 @@
 
         setMode();
 
-        window.addEventListener("resize", setMode);
+        window.addEventListener("resize", setMode);[]
     </script>
 </body>
 
