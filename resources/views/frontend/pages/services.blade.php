@@ -30,11 +30,11 @@
                         </div>
                         <h4 class="mb-3">Road Transportation</h4>
                         <p style="text-align: justify;">यह ट्रांसपोर्ट कंपनी आपको reliable और efficient road transportation services प्रदान करती है, जो आपके सामान की timely delivery का promise करती है। हम Faizabad, Azamgarh, Barhalganj, Maunath Bhanjan, Belthera Road Ballia, Jaunpur,... 
-                            {{-- Dohrighat, Sikriganj, Gagha, Kauriram, और Barhaj जैसे key areas में logistics solutions के experts हैं, जो businesses को उनके customers से connect करते हैं। ... --}}
+                        Dohrighat, Sikriganj, Gagha, Kauriram, और Barhaj जैसे key areas में logistics solutions के experts हैं, जो businesses को उनके customers से connect करते हैं। 
 
-                            {{-- हमारी road transportation services हर type के सामान की safety और timely delivery को ensure करती हैं। चाहे आपको industrial goods transport करने हों या consumer products, हमारे experienced drivers और modern tracking systems से आपको real-time updates मिलते हैं, ताकि आप अपने shipment की exact location track कर सकें। ये locations हमारे key transport hubs हैं, जहां से हम आपके goods को efficiently deliver करते हैं. --}}
+                        हमारी road transportation services हर type के सामान की safety और timely delivery को ensure करती हैं। चाहे आपको industrial goods transport करने हों या consumer products, हमारे experienced drivers और modern tracking systems से आपको real-time updates मिलते हैं, ताकि आप अपने shipment की exact location track कर सकें। ये locations हमारे key transport hubs हैं, जहां से हम आपके goods को efficiently deliver करते हैं.
                             
-                            {{-- Safety और reliability पर हमारा focus है, इसलिए हमारे customers को complete satisfaction मिलती है। आपका सामान हमारे trucks के जरिए इन सभी locations में safely और time पर पहुंचता है। हर delivery को हम पूरी सावधानी और professionalism के साथ handle करते हैं, ताकि आपको best service मिल सके।.</p> --}}
+                        Safety और reliability पर हमारा focus है, इसलिए हमारे customers को complete satisfaction मिलती है। आपका सामान हमारे trucks के जरिए इन सभी locations में safely और time पर पहुंचता है। हर delivery को हम पूरी सावधानी और professionalism के साथ handle करते हैं, ताकि आपको best service मिल सके।
                         </p>
                         <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
                     </div>

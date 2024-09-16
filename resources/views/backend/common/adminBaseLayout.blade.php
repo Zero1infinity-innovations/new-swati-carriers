@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css" rel="stylesheet"/>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" rel="stylesheet">
@@ -45,6 +50,11 @@
             box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
+    <script>
+        import { Modal, Ripple, initMDB } from "mdb-ui-kit";
+    
+        initMDB({ Modal, Ripple });
+    </script>
 </head>
 
 <body>
@@ -65,6 +75,9 @@
     <script type="text/javascript" src="{{ URL::asset('adminAssets/js/mdbsnippet.min.js') }}"></script>
     <!-- MDB -->
     <script type="text/javascript" src="{{ URL::asset('adminAssets/js/mdb.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('adminAssets/js/custom.js') }} "></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
 
     <!-- Custom scripts -->
     <script type="text/javascript">

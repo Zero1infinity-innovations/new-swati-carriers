@@ -32,3 +32,41 @@
 .card-head{
     padding: 10px 0px 10px 0px;
 }
+
+#notification-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+}
+
+.notification {
+  position: relative;
+  padding: 15px;
+  margin-bottom: 10px;
+  color: #fff;
+  border-radius: 4px;
+  width: 300px;
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+#success-message {
+  background-color: #28a745; /* Green for success */
+}
+
+#error-message {
+  background-color: #dc3545; /* Red for error */
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification.hide {
+  opacity: 0;
+  transform: translateX(100%);
+}
