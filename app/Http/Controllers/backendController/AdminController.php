@@ -70,13 +70,15 @@ class AdminController extends Controller
         // Check if the folder exists; if not, create it
         $destinationPath = public_path('adminAssets/images/services');
         if (!File::exists($destinationPath)) {
-            File::makeDirectory($destinationPath, 0755, true, true);
+            File::makeDirectory($destinationPath, 0777, true, true);
         }
 
         // Handle the file upload and save the image in the service_images table
         if ($request->hasFile('service_image')) {
             $imageName = time() . '.' . $request->service_image->extension();
-            $request->service_image->move(public_path($destinationPath), $imageName);
+
+            // Use relative path here; the move method automatically appends the destination path to the public directory
+            $request->service_image->move('adminAssets/images/services', $imageName);
 
             // Store image reference in service_images table
             ServicesImage::create([
@@ -84,8 +86,10 @@ class AdminController extends Controller
                 'image_path' => $imageName,
             ]);
         }
-        return redirect()->back()->with('success', 'Service created successfully.');
+
+        return redirect()->back()->with('success', 'Service Addedd successfully.');
     }
+
 
     public function showServiceDetails($service_id)
     {
@@ -95,10 +99,6 @@ class AdminController extends Controller
             ->where('services.id', $service_id)
             ->select('services.*', 'services_images.image_path')
             ->first();
-
-        // Check if service exists
-        // dd($service->image_path);
-        // die();
         if ($service) {
             $response = [
                 'success' => true,

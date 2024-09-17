@@ -49,24 +49,11 @@
     .image-preview-container:hover .image-upload-label {
         color: #007bff;
     }
-
-    .active-status {
-        color: green;
-    }
-    .inactive-status {
-        color: red;
-    }
 </style>
 @section('content')
     <div class="container-fluid">
-        <div id="notification-container">
-            <div id="success-message" class="notification" style="display: none;">
-                <span id="success-text"></span>
-            </div>
-            <div id="error-message" class="notification" style="display: none;">
-                <span id="error-text"></span>
-            </div>
-        </div>
+        @include('backend.common.alert')
+        @include('backend.common.successMessagae')
         <div class="row">
             <div class="col-lg-12 mb-3">
                 <div class="card" style="border-left: 5px solid black; ">
@@ -156,6 +143,8 @@
                                             <th>Service Name</th>
                                             <th>Service Description</th>
                                             <th>Status</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -179,16 +168,24 @@
                                                 </td>
                                                 <td>{{ substr(strip_tags($service->service_description), 0, 70) }}...</td>
                                                 <td>
-                                                    <div id="service_Status" data-id="{{ $service->id }}"
-                                                        class="mb-2">
-                                                        <span class="btn btn-sm btn-success" id="changeStatus" onclick="changeStatus({{ $service->id }})">{{ $service->service_status == 1 ? 'Active' : 'Inactive' }}</span>
-                                                        <span id="statusSpinner" class="spinner-border spinner-border-sm" style="display: none;" role="status"></span>
-                                                    </div>
-                                                    <div id="service_Status" data-id="{{ $service->id }}" class="mb-2">
-                                                        <span class="btn btn-sm btn-primary">Edit</span>
-                                                    </div>
-                                                    <div id="service_Status" data-id="{{ $service->id }}" class="mb-2">
-                                                        <span class="btn btn-sm btn-danger">Delete</span>
+                                                    @if ($service->service_status == 1)
+                                                        <a href="#" class="btn btn-success btn-sm mb-2 changeStatus" data-service-id="{{ $service->id }}" data-status="1">Active</a>
+                                                    @elseif($service->service_status == 0)
+                                                        <a href="#" class="btn btn-danger btn-sm mb-2 changeStatus" data-service-id="{{ $service->id }}" data-status="0">Inactive</a>
+                                                    @endif
+                                                    <span id="statusSpinner" class="spinner-border spinner-border-sm mb-2" style="display: none;" role="status"></span>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-sm btn-danger">
+                                                        <i class="bi bi-trash-fill"></i>
+                                                    </a>
+                                                    <div class="spinner-border text-primary" role="status" style="display: none;">
+                                                        <span class="visually-hidden">Loading...</span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -373,18 +370,20 @@
             });
         };
 
-        // toggling service status
-        const changeStatus = (serviceId) => {
 
+        // toggling service status
+        const changeStatus = (element) => {
+            const serviceId = $(element).data('service-id');
+            const currentStatus = $(element).data('status');
 
             var confirmChange = confirm('Are you sure you want to change the service status?');
-            if(confirmChange) {
+            if (confirmChange) {
                 
                 $('#statusSpinner').show();
                 $('#statusText').hide();
 
                 // Disable the button to prevent multiple clicks
-                $('#changeStatus').prop('disabled', true);
+                $(element).prop('disabled', true);
 
                 $.ajax({
                     url: "{{ route('admin.changeServivceStatus') }}", 
@@ -393,27 +392,28 @@
                         _token: '{{ csrf_token() }}', 
                         service_id: serviceId
                     },
-
                     success: function(response) {
-
                         $('#statusSpinner').hide();
                         $('#statusText').show();
-                        
+
                         // Enable the button again
-                        $('#changeStatus').prop('disabled', false);
+                        $(element).prop('disabled', false);
 
                         if (response.success) {
                             // Update the button text and status class
-                            if (response.status === 1) {
-                                $('#changeStatus').removeClass('btn-danger').addClass('btn-success');
-                                $('#changeStatus').text('Active');
-                                showNotification('success', 'Service status successfully updated.');
+                            if (response.status == 1) {
+                                $(element).removeClass('btn-danger').addClass('btn-success');
+                                $(element).text('Active');
+                                $(element).data('status', 1);
                             } else {
-                                $('#changeStatus').removeClass('btn-success').addClass('btn-danger');
-                                $('#changeStatus').text('Inactive');
-                                showNotification('success', 'Service status successfully updated.');
+                                $(element).removeClass('btn-success').addClass('btn-danger');
+                                $(element).text('Inactive');
+                                $(element).data('status', 0);
                             }
-                        }else{
+                            // Call showNotification every time status changes successfully
+                            showNotification('success', 'Service status successfully updated.');
+                        } else {
+                            // Call showNotification in case of failure
                             showNotification('error', 'Failed to update service status.');
                         }
                     },
@@ -423,14 +423,21 @@
                         $('#statusText').show();
 
                         // Enable the button again
-                        $('#changeStatus').prop('disabled', false);
-                        // alert(xhr.responseText); // Handle any errors here
+                        $(element).prop('disabled', false);
+
+                        // Call showNotification on error
                         showNotification('error', xhr.responseText);
                     }
                 });
-            }else {
+            } else {
                 return false;
             }
         }
+
+        // Attach event listener to buttons with the class 'changeStatus'
+        $(document).on('click', '.changeStatus', function(e) {
+            e.preventDefault();
+            changeStatus(this);
+        });
     </script>
 @endsection
