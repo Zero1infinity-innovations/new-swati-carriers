@@ -181,7 +181,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-danger">
+                                                    <a href="{{ route('admin.deleteService', ['id' => $service->id]) }}" class="btn btn-sm btn-danger">
                                                         <i class="bi bi-trash-fill"></i>
                                                     </a>
                                                     <div class="spinner-border text-primary" role="status" style="display: none;">

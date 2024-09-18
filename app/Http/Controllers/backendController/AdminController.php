@@ -140,4 +140,72 @@ class AdminController extends Controller
 
         return response()->json(['success' => false], 404);
     }
+
+    // delete service
+    public function deleteService($service_id){
+        $service = Services::find($service_id);
+        if($service){
+            // Delete service image from public directory
+            $imagePath = public_path('adminAssets/images/services/'. $service->image_path);
+            if(File::exists($imagePath)){
+                File::delete($imagePath);
+            }
+
+            // Delete service image from database
+            ServicesImage::where('service_id', $service_id)->delete();
+
+            // Delete service from database
+            $service->delete();
+
+            return redirect()->back()->with('success', 'Service deleted successfully.');
+        }
+        return redirect()->back()->with('error', 'Service not found.');
+    }
+
+
+    // booked Services Pages
+
+    public function bookedServices(){
+        $data['breadcrumbs'] = [];
+        $data['breadcrumbs'][] = [
+            'text' => 'Dashboard',
+            'url' => route('admin.dashboard')
+        ];
+        $data['breadcrumbs'][] = [
+            'text' => 'Booked Services',
+            'url' => route('admin.bookedServices')
+        ];
+        $data['title'] = "Booked Services";
+
+        // $bookedServices = DB::table('booked_services')
+        //     ->join('services', 'booked_services.service_id', '=','services.id')
+        //     ->join('users', 'booked_services.user_id', '=', 'users.id')
+        //     ->select('booked_services.*','services.service_name', 'users.name', 'users.email')
+        //     ->paginate(10);
+
+        return view('backend.pages.bookedServices', $data);
+    }
+
+    // add a new booked service
+
+    public function addBookedServicePage(){
+        $data['breadcrumbs'] = [];
+        $data['breadcrumbs'][] = [
+            'text' => 'Dashboard',
+            'url' => route('admin.dashboard')
+        ];
+        $data['breadcrumbs'][] = [
+            'text' => 'Booked Services',
+            'url' => route('admin.bookedServices')
+        ];
+        $data['breadcrumbs'][] = [
+            'text' => 'Add New Booked Service',
+            'url' => route('admin.addBookedServicePage')
+        ];
+        $data['title'] = "Add New Booked Service";
+        
+        $data['services'] = Services::all();
+
+        return view('backend.pages.addBookingService', $data);
+    }
 }

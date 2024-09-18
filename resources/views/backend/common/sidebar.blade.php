@@ -19,7 +19,10 @@
                     </a>
                 </li>
                 <li class="sidenav-item">
-                    <a class="sidenav-link"><i class="bi bi-journal-text pr-3"></i><span>Booked Services</span></a>
+                    <a class="sidenav-link {{ Route::currentRouteName() == 'bookedServices' ? 'active' : '' }}" href="{{ route('admin.bookedServices') }}">
+                        <i class="bi bi-journal-text pr-3"></i>
+                        <span>Booked Services</span>
+                    </a>
                 </li>
             </ul>
         </li>
