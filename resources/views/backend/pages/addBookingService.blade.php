@@ -42,24 +42,15 @@
                                 <form action="" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row mb-3">
-                                        <div class="col-sm-6">
-                                            <label for="serviceTitle" class="form-label">Service Name</label>
-                                            <select class="form-control" name="serviceTitle" id="serviceTitle">
-                                                <option hidden>Select Service Type</option>
-                                                @foreach ($services as $service)
-                                                    <option value="{{ $service->id }}">{{ $service->service_name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label for="bookingDate" class="form-label">Booking Date</label>
-                                            <input type="date" class="form-control" id="bookingDate" name="booking_date" required>
+                                        <div class="col-sm-12 mb-">
+                                            <label for="billNumber">Bill Number</label>
+                                            <input type="number" name="billNumber" placeholder="bill number" id="billNumber" class="form-control" required/>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-6">
                                             <label for="serviceTitle" class="form-label">Service Name</label>
-                                            <select class="form-control" name="serviceTitle" id="serviceTitle">
+                                            <select class="form-control" name="serviceTitle" id="serviceTitle" required>
                                                 <option hidden>Select Service Type</option>
                                                 @foreach ($services as $service)
                                                     <option value="{{ $service->id }}">{{ $service->service_name }}</option>
@@ -68,37 +59,41 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="bookingDate" class="form-label">Booking Date</label>
-                                            <input type="date" class="form-control" id="bookingDate" name="booking_date" required>
+                                            <input type="date" class="form-control" placeholder="Booking Date..." id="bookingDate" name="booking_date" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-6">
-                                            <label for="serviceTitle" class="form-label">Service Name</label>
-                                            <select class="form-control" name="serviceTitle" id="serviceTitle">
-                                                <option hidden>Select Service Type</option>
-                                                @foreach ($services as $service)
-                                                    <option value="{{ $service->id }}">{{ $service->service_name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="customerName" class="form-label">Customer Name</label>
+                                            <input type="text" class="form-control" placeholder="Customer Name..." id="customerName" name="customerName" required/>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label for="bookingDate" class="form-label">Booking Date</label>
-                                            <input type="date" class="form-control" id="bookingDate" name="booking_date" required>
+                                            <label for="customerEmail" class="form-label">Customer Email</label>
+                                            <input type="email" class="form-control" placeholder="Customer Email..." id="customerEmail" name="customerEmail" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-6">
-                                            <label for="serviceTitle" class="form-label">Service Name</label>
-                                            <select class="form-control" name="serviceTitle" id="serviceTitle">
-                                                <option hidden>Select Service Type</option>
-                                                @foreach ($services as $service)
-                                                    <option value="{{ $service->id }}">{{ $service->service_name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="serviceTitle" class="form-label">Customer Number</label>
+                                            <input type="text" name="customerNumber" id="customerNumber" maxlength="10" class="form-control" required placeholder="Customer Number...">
                                         </div>
                                         <div class="col-sm-6">
-                                            <label for="bookingDate" class="form-label">Booking Date</label>
-                                            <input type="date" class="form-control" id="bookingDate" name="booking_date" required>
+                                            <label for="bookingPrice" class="form-label">Booking Price</label>
+                                            <input type="number" class="form-control" id="bookingPrice" name="bookingPrice" placeholder="Booking Price..." required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <label for="localAddress" class="form-label">Local Address</label>
+                                            <input type="text" class="form-control" placeholder="Local Address" name="localAddress" id="localAddress" required/>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label for="city" class="form-label">City</label>
+                                            <input type="text" class="form-control" placeholder="Enter City..." name="city" id="city" required/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="state" class="form-label">State</label>
+                                            <input type="text" class="form-control" id="state" name="state" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">

@@ -40,6 +40,10 @@ class AdminController extends Controller
             'text' => 'Services',
             'url' => route('admin.services')
         ];
+        $data['breadcrumbs'][] = [
+            'text' => 'Services',
+            'url' => route('admin.services')
+        ];
         $data['title'] = "Services";
 
         $services = DB::table('services')
@@ -172,6 +176,10 @@ class AdminController extends Controller
             'url' => route('admin.dashboard')
         ];
         $data['breadcrumbs'][] = [
+            'text' => 'Services',
+            'url' => route('admin.services')
+        ];
+        $data['breadcrumbs'][] = [
             'text' => 'Booked Services',
             'url' => route('admin.bookedServices')
         ];
@@ -195,6 +203,10 @@ class AdminController extends Controller
             'url' => route('admin.dashboard')
         ];
         $data['breadcrumbs'][] = [
+            'text' => 'Services',
+            'url' => route('admin.services')
+        ];
+        $data['breadcrumbs'][] = [
             'text' => 'Booked Services',
             'url' => route('admin.bookedServices')
         ];
@@ -207,5 +219,26 @@ class AdminController extends Controller
         $data['services'] = Services::all();
 
         return view('backend.pages.addBookingService', $data);
+    }
+
+    // serviceLocations
+
+    public function servicesLocation(){
+        $data['breadcrumbs'] = [];
+        $data['breadcrumbs'][] = [
+            'text' => 'Dashboard',
+            'url' => route('admin.dashboard')
+        ];
+        $data['breadcrumbs'][] = [
+            'text' => 'Services Area',
+            'url' => route('admin.servicesLocation')
+        ];
+        $data['breadcrumbs'][] = [
+            'text' => 'Service Locations',
+            'url' => route('admin.servicesLocation')
+        ];
+        $data['title'] = "Service Locations";
+
+        return view('backend.pages.servicesLocation', $data);
     }
 }

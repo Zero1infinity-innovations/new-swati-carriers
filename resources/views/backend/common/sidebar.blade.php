@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="sidenav-item">
-                    <a class="sidenav-link {{ Route::currentRouteName() == 'bookedServices' ? 'active' : '' }}" href="{{ route('admin.bookedServices') }}">
+                    <a class="sidenav-link {{ (Route::currentRouteName() == 'bookedServices' || Route::currentRouteName() == 'addBookedServicePage') ? 'active' : '' }}" href="{{ route('admin.bookedServices') }}">
                         <i class="bi bi-journal-text pr-3"></i>
                         <span>Booked Services</span>
                     </a>
@@ -27,10 +27,13 @@
             </ul>
         </li>
         <li class="sidenav-item">
-            <a class="sidenav-link"><i class="fas fa-lock pr-3"></i><span>Password</span></a>
+            <a class="sidenav-link"><i class="fas fa-map-location pr-3"></i><span>Services Area</span></a>
             <ul class="sidenav-collapse">
                 <li class="sidenav-item">
-                    <a class="sidenav-link">Request password</a>
+                    <a class="sidenav-link" href="{{ route('admin.servicesLocation') }}">
+                        <i class="fas fa-location-dot pr-3"></i>
+                        <span>Services Location</span>
+                    </a>
                 </li>
                 <li class="sidenav-item">
                     <a class="sidenav-link">Reset password</a>

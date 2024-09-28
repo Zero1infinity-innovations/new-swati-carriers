@@ -45,6 +45,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // booked services routes
     Route::get('/bookedServices', [AdminController::class, 'bookedServices'])->name('bookedServices');
     Route::get('/addBookedServicePage', [AdminController::class, 'addBookedServicePage'])->name('addBookedServicePage');
+    Route::get('/servicesLocation', [AdminController::class, 'servicesLocation'])->name('servicesLocation');
     // Route::post('/cancelServiceBooking/{id}', [AdminController::class, 'cancelServiceBooking'])->name('cancelServiceBooking');
 
     // // clients routes
